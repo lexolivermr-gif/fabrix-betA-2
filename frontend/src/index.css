@@ -1,0 +1,8 @@
+body {
+  margin: 0;
+  background: #0e0d13;
+  color: #f0ecff;
+  font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

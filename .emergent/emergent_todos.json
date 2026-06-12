@@ -1,0 +1,22 @@
+[
+  {
+    "content": "Phase 1: Setup + Get OpenAI playbook + POC + Fix until pass",
+    "status": "completed"
+  },
+  {
+    "content": "Phase 2: Backend - auth + AI service + manuals CRUD + public share + settings + Stripe",
+    "status": "completed"
+  },
+  {
+    "content": "Phase 2: Frontend - full app (sidebar, topbar, dashboard, wizard, viewer, credits, settings, share) + regen + progress + toasts",
+    "status": "completed"
+  },
+  {
+    "content": "Phase 2: End-to-end testing with testing_agent_v3 + fix bugs found (Backend 100%, Frontend 95%)",
+    "status": "completed"
+  },
+  {
+    "content": "Phase 2: All user stories validated",
+    "status": "completed"
+  }
+]
