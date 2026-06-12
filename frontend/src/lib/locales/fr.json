@@ -60,8 +60,8 @@
   "wizard": {
     "steps": { "project": "Projet", "clarify": "Clarification", "gen": "Génération", "review": "Révision" },
     "project_title": "Décris ton projet",
-    "project_sub": "Une phrase ou deux suffisent. Claude posera 3 à 5 questions ciblées.",
-    "project_placeholder": "Ex : convertir un panier d'épicerie en panier avant de vélo cargo…",
+    "project_sub": "Construction ou réparation — une phrase ou deux suffisent. Claude posera 3 à 5 questions ciblées.",
+    "project_placeholder": "Ex : monter une étagère IKEA Billy 80 cm — ou réparer la porte de mon lave-vaisselle qui ne ferme plus…",
     "clarify_title": "Clarification du projet",
     "clarify_sub": "Claude pose au moins 3 questions ciblées (matériaux, dimensions, outils…).",
     "chat_placeholder": "Ta réponse…",

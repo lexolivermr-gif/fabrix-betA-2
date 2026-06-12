@@ -12,7 +12,6 @@ import ToastHost from "@/components/ToastHost";
 import AuthPage from "@/pages/AuthPage";
 import DashboardPage from "@/pages/DashboardPage";
 import CreatePage from "@/pages/CreatePage";
-import FixItPage from "@/pages/FixItPage";
 import ManualViewerPage from "@/pages/ManualViewerPage";
 import CreditsPage from "@/pages/CreditsPage";
 import SettingsPage from "@/pages/SettingsPage";
@@ -39,7 +38,6 @@ export default function App() {
           <Route element={<AppShell />}>
             <Route path="/" element={<DashboardPage />} />
             <Route path="/create" element={<CreatePage />} />
-            <Route path="/fixit" element={<FixItPage />} />
             <Route path="/manual/:id" element={<ManualViewerPage />} />
             <Route path="/credits" element={<CreditsPage />} />
             <Route path="/settings" element={<SettingsPage />} />

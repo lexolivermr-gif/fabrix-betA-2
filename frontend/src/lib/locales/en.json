@@ -60,8 +60,8 @@
   "wizard": {
     "steps": { "project": "Project", "clarify": "Clarification", "gen": "Generation", "review": "Review" },
     "project_title": "Describe your project",
-    "project_sub": "One or two sentences are enough. Claude will ask 3 to 5 focused questions.",
-    "project_placeholder": "Ex: convert a shopping basket into a front cargo bike basket…",
+    "project_sub": "Building or repairing — one or two sentences are enough. Claude will ask 3 to 5 focused questions.",
+    "project_placeholder": "Ex: assemble an IKEA Billy bookshelf — or repair my dishwasher door that won't close anymore…",
     "clarify_title": "Project clarification",
     "clarify_sub": "Claude asks at least 3 focused questions (materials, dimensions, tools…).",
     "chat_placeholder": "Your answer…",

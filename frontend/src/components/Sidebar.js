@@ -12,7 +12,6 @@ export default function Sidebar() {
   const items = [
     { to: "/",        label: t("nav.dashboard"), ico: "▣" },
     { to: "/create",  label: t("nav.create"),    ico: "✨" },
-    { to: "/fixit",   label: t("nav.fixit"),     ico: "🔧" },
     { to: "/credits", label: t("nav.credits"),   ico: "✎" },
     { to: "/settings",label: t("nav.settings"),  ico: "⚙" },
   ];
