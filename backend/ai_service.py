@@ -489,10 +489,18 @@ async def generate_all_step_images(
     tasks = [_one(i) for i in range(1, n)] + [_cover()]
     await asyncio.gather(*tasks)
 
-    # ensure all step images present (fallback to step1 for any failure)
-    for i, b in enumerate(images):
-        if b is None:
-            log.warning("step %d image missing, using step1 as fallback", i)
-            images[i] = step1_b64
+    # If ANY step image failed, fail the whole job — never silently duplicate step1.
+    missing = [i for i, b in enumerate(images) if b is None]
+    if missing:
+        # Try to surface the first concrete reason from the most recent log line
+        raise HTTPException(
+            status_code=502,
+            detail=(
+                f"{len(missing)} étape(s) sur {n} ont échoué (indices {missing}). "
+                "Le manuel n'a PAS été sauvegardé pour éviter d'enregistrer des images dupliquées. "
+                "Cause la plus probable: quota OpenAI atteint ou prompt bloqué. "
+                "Vérifie ton compte OpenAI puis relance la génération."
+            ),
+        )
 
     return [b for b in images], (cover_holder["cover"] or step1_b64)
