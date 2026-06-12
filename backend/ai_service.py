@@ -62,6 +62,38 @@ def get_openai() -> AsyncOpenAI:
     return _openai_client
 
 
+def _shrink_png_b64(b64: str, max_bytes: int = 600_000) -> str:
+    """Re-encode a PNG (base64) to fit under max_bytes so the whole manual stays under
+    MongoDB's 16MB BSON document limit. IKEA-style line art quantizes to a tiny palette
+    losslessly visually.
+    """
+    try:
+        from io import BytesIO
+        from PIL import Image
+        raw = base64.b64decode(b64)
+        if len(raw) <= max_bytes:
+            return b64
+        im = Image.open(BytesIO(raw)).convert("RGB")
+        # Quantize to adaptive palette — line art uses very few colors
+        for colors in (64, 32, 16):
+            buf = BytesIO()
+            im.quantize(colors=colors, method=Image.Quantize.MEDIANCUT).save(
+                buf, format="PNG", optimize=True
+            )
+            data = buf.getvalue()
+            if len(data) <= max_bytes:
+                return base64.b64encode(data).decode("ascii")
+        # Fallback: downscale 75% then quantize 16 colors
+        w, h = im.size
+        im = im.resize((int(w * 0.75), int(h * 0.75)), Image.LANCZOS)
+        buf = BytesIO()
+        im.quantize(colors=16, method=Image.Quantize.MEDIANCUT).save(buf, format="PNG", optimize=True)
+        return base64.b64encode(buf.getvalue()).decode("ascii")
+    except Exception as e:
+        log.warning("PNG shrink failed, keeping original: %s", e)
+        return b64
+
+
 # ---------------------------------------------------------------------------
 # Model logging helpers (mandatory per spec)
 # ---------------------------------------------------------------------------
@@ -353,12 +385,12 @@ async def gen_step_image(image_prompt: str, style_anchor: str,
         b64 = getattr(item, "b64_json", None)
         url = getattr(item, "url", None)
         if b64:
-            return b64
+            return _shrink_png_b64(b64)
         if url:
             async with httpx.AsyncClient(timeout=120.0) as h:
                 r = await h.get(url)
                 r.raise_for_status()
-                return base64.b64encode(r.content).decode("ascii")
+                return _shrink_png_b64(base64.b64encode(r.content).decode("ascii"))
         raise RuntimeError("Pas d'image dans la réponse OpenAI.")
     except HTTPException:
         raise
