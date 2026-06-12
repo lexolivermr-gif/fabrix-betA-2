@@ -81,6 +81,7 @@ class ManualStep(BaseModel):
 class CreateManualRequest(BaseModel):
     project: str
     history: List[ChatMessage] = Field(default_factory=list)
+    lang: Optional[str] = "fr"
 
 
 class ManualSummary(BaseModel):
