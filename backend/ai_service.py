@@ -42,7 +42,7 @@ TEXT_MODEL_PROVIDER = "anthropic"
 TEXT_MODEL_NAME = "claude-sonnet-4-5-20250929"   # user-facing alias: "claude-sonnet-4-5"
 IMAGE_MODEL = "gpt-image-2"                        # locked
 IMAGE_SIZE = "1536x1024"
-IMAGE_QUALITY = "high"
+IMAGE_QUALITY = "medium"
 
 _OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 _EMERGENT_LLM_KEY = os.environ.get("EMERGENT_LLM_KEY")
