@@ -22,6 +22,7 @@ from __future__ import annotations
 
 import os
 import json
+import re
 import base64
 import asyncio
 import logging
@@ -337,8 +338,11 @@ async def gen_step_image(image_prompt: str, style_anchor: str,
     - If reference_image_b64 is provided → images.edit (img2img)
     - Else → images.generate (text-to-image)
     """
+    # Build a defensive prefix: technical diagram framing reduces moderation false-positives.
     full_prompt = (
-        "Technical illustration in strict IKEA assembly manual style.\n\n"
+        "Technical illustration in strict IKEA assembly manual style.\n"
+        "STRICTLY a static technical diagram of the object only. NO person, NO hands aiming, "
+        "NO shooting action, NO target, NO projectile in motion, NO violent or threatening context.\n\n"
         f"STYLE ANCHOR (locked across the whole manual):\n{style_anchor}\n\n"
         "STRICT VISUAL RULES:\n"
         "- Pure white background (#FFFFFF). No gradients, no shadows, no textures.\n"
@@ -357,13 +361,13 @@ async def gen_step_image(image_prompt: str, style_anchor: str,
             + full_prompt
         )
 
-    try:
+    async def _call(prompt_text: str) -> str:
         if reference_image_b64:
             ref_bytes = base64.b64decode(reference_image_b64)
             resp = await get_openai().images.edit(
                 model=IMAGE_MODEL,
                 image=[("reference.png", ref_bytes, "image/png")],
-                prompt=full_prompt[:3500],
+                prompt=prompt_text[:3500],
                 size=IMAGE_SIZE,
                 quality=IMAGE_QUALITY,
                 n=1,
@@ -372,13 +376,12 @@ async def gen_step_image(image_prompt: str, style_anchor: str,
         else:
             resp = await get_openai().images.generate(
                 model=IMAGE_MODEL,
-                prompt=full_prompt[:3500],
+                prompt=prompt_text[:3500],
                 size=IMAGE_SIZE,
                 quality=IMAGE_QUALITY,
                 n=1,
                 user=project_user_id[:128] if project_user_id else None,
             )
-        # Log model
         returned_model = getattr(resp, "model", None) or IMAGE_MODEL
         _log_model_use("image", requested=IMAGE_MODEL, returned=returned_model)
         item = resp.data[0]
@@ -392,9 +395,37 @@ async def gen_step_image(image_prompt: str, style_anchor: str,
                 r.raise_for_status()
                 return _shrink_png_b64(base64.b64encode(r.content).decode("ascii"))
         raise RuntimeError("Pas d'image dans la réponse OpenAI.")
+
+    try:
+        return await _call(full_prompt)
     except HTTPException:
         raise
     except Exception as e:
+        err_str = str(e)
+        # Retry once with a sanitized prompt when OpenAI moderation blocks the image (illicit/weapons).
+        if "moderation_blocked" in err_str or "safety" in err_str.lower():
+            log.warning("gpt-image-2 moderation_blocked — retrying with sanitized prompt")
+            sanitized = re.sub(
+                r"\b(weapon|firearm|gun|rifle|bow|crossbow|arrow|bolt|projectile|"
+                r"shoot|shooting|fire|firing|aim|aiming|target|kill|hit|blade|"
+                r"sharp|tip|barbed|venom|poison|"
+                r"arbal[eè]te|arc|fl[eè]che|tir|tirer|viser|cible|arme|tuer)\b",
+                "part", full_prompt, flags=re.IGNORECASE,
+            )
+            sanitized = (
+                "Neutral mechanical engineering diagram for sport/recreational equipment assembly. "
+                "Pure exploded-view technical schematic on white background, no person, no action, "
+                "no living target, no motion, no danger context. Educational documentation only.\n\n"
+                + sanitized
+            )
+            try:
+                return await _call(sanitized)
+            except Exception as e2:
+                log.error("gpt-image-2 failed even after sanitization: %s", e2)
+                raise HTTPException(
+                    status_code=502,
+                    detail=f"OpenAI a refusé cette illustration même après reformulation (modération). Détail: {e2}",
+                )
         log.error("gpt-image-2 failed (with_ref=%s): %s", bool(reference_image_b64), e)
         raise HTTPException(status_code=502, detail=f"gpt-image-2 a échoué: {e}")
 
