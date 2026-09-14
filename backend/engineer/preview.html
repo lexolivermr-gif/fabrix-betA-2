@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fabrix Engineer — preview</title>
+<style>
+  :root{
+    --bg:#0e0d13; --surface:#16141e; --surface2:#1e1b2a; --border:#2e2940;
+    --violet:#7c5cbf; --violet-light:#9d7de0; --text:#f0ecff; --text2:#b8b3d0;
+    --text3:#7a758f; --success:#6bcba0; --danger:#e87d7d;
+    --font-title:'Syne',system-ui,sans-serif; --font-body:'DM Sans',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font:14px var(--font-body)}
+  .wrap{max-width:1000px;margin:0 auto;padding:24px 20px 80px}
+  h1{font-family:var(--font-title);font-size:22px;margin:0}
+  .sub{color:var(--text3);font-size:13px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:16px}
+  .btn{font:inherit;font-size:13px;padding:8px 14px;border-radius:8px;border:1px solid var(--border);
+       background:var(--surface2);color:var(--text);cursor:pointer}
+  .btn:hover{border-color:#3d3757}
+  .btn.p{background:linear-gradient(180deg,var(--violet-light),var(--violet));border:none;color:#fff}
+  .btn[disabled]{opacity:.5;cursor:not-allowed}
+  .sheet{background:#fff;border-radius:8px;padding:8px}
+  .sheet svg{display:block;width:100%;height:auto}
+  .tag{display:inline-block;padding:3px 9px;border-radius:999px;font-size:11px;
+       background:rgba(124,92,191,.18);color:var(--violet-light);font-family:ui-monospace,monospace}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px}
+  h4{margin:0 0 6px;font-size:11px;letter-spacing:.08em;color:var(--text3);text-transform:uppercase}
+  ol{margin:0;padding-left:18px;line-height:1.6}
+  .why{line-height:1.6;color:var(--text2)}
+  .chk{line-height:1.6;color:var(--success)}
+  .haz{color:var(--danger);margin-top:8px}
+  textarea{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:8px;
+           color:var(--text);padding:10px;font:inherit;resize:vertical}
+  .row{display:flex;align-items:center;gap:10px}
+  .hid{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="row" style="margin-bottom:6px">
+    <h1 style="flex:1">Fabrix Engineer</h1>
+    <span class="sub" id="prov"></span>
+  </div>
+  <div class="sub" style="margin-bottom:20px">
+    One model asks the questions, works out the mechanism, and draws every sheet.
+  </div>
+
+  <div class="card">
+    <h4>Brief</h4>
+    <textarea id="proj" rows="2">build a crossbow that can shoot toothpicks</textarea>
+    <div class="row" style="margin-top:10px">
+      <button class="btn p" id="ask">Ask the engineer</button>
+      <button class="btn" id="demo">Load the bundled crossbow guide</button>
+      <span class="sub" style="margin-left:auto" id="status"></span>
+    </div>
+  </div>
+
+  <div class="card hid" id="chatCard">
+    <h4>Clarifying questions</h4>
+    <div id="chat" style="max-height:300px;overflow:auto;margin-bottom:10px"></div>
+    <div class="row">
+      <input id="msg" style="flex:1" class="btn" placeholder="Answer the engineer…" />
+      <button class="btn" id="send">Send</button>
+      <button class="btn p" id="build">Build the guide</button>
+    </div>
+  </div>
+
+  <div id="out"></div>
+</div>
+
+<script>
+const $ = (s) => document.querySelector(s);
+const state = { project:"", history:[], spec:null, ready:false };
+
+function bubble(role, text){
+  const d = document.createElement("div");
+  d.style.cssText = `display:flex;justify-content:${role==="user"?"flex-end":"flex-start"};margin-bottom:10px`;
+  const b = document.createElement("div");
+  b.style.cssText = `max-width:78%;padding:10px 13px;border-radius:12px;font-size:13.5px;line-height:1.55;
+    white-space:pre-wrap;background:${role==="user"?"var(--violet)":"var(--surface2)"};
+    border:${role==="user"?"none":"1px solid var(--border)"}`;
+  b.textContent = text; d.appendChild(b);
+  $("#chat").appendChild(d); $("#chat").scrollTop = 1e9;
+}
+
+fetch("api/engineer/health").then(r=>r.json()).then(d=>{
+  $("#prov").textContent = d.configured
+    ? `model provider: ${d.provider}`
+    : "no model key configured — the bundled guide shows the engine, the chat needs a key";
+  $("#ask").disabled = !d.configured;
+});
+
+$("#ask").onclick = async () => {
+  state.project = $("#proj").value.trim();
+  $("#status").textContent = "thinking…";
+  const r = await fetch("api/engineer/ask", {method:"POST",headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({project:state.project, history:[], lang:"en"})}).then(r=>r.json());
+  $("#status").textContent = "";
+  state.history = [{role:"assistant", content:r.reply}];
+  state.ready = r.ready;
+  bubble("assistant", r.reply);
+  $("#chatCard").classList.remove("hid");
+};
+
+$("#send").onclick = async () => {
+  const t = $("#msg").value.trim(); if(!t) return;
+  const next = [...state.history, {role:"user", content:t}];
+  bubble("user", t); $("#msg").value = "";
+  const r = await fetch("api/engineer/ask", {method:"POST",headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({project:state.project, history:next, lang:"en"})}).then(r=>r.json());
+  state.history = [...next, {role:"assistant", content:r.reply}];
+  state.ready = r.ready;
+  bubble("assistant", r.reply);
+};
+
+$("#build").onclick = async () => {
+  $("#status").textContent = "the engineer is working out the mechanism…";
+  const spec = await fetch("api/engineer/design", {method:"POST",headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({project:state.project, history:state.history, lang:"en"})}).then(r=>r.json());
+  state.spec = spec;
+  $("#status").textContent = "draughting the sheets…";
+  await render(spec);
+  $("#status").textContent = "";
+};
+
+$("#demo").onclick = async () => {
+  $("#status").textContent = "loading…";
+  const spec = await fetch("api/engineer/example").then(r=>r.json());
+  state.spec = spec; await render(spec); $("#status").textContent = "";
+};
+
+async function render(spec){
+  const s = await fetch("api/engineer/sheets", {method:"POST",headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({spec})}).then(r=>r.json());
+  const out = $("#out"); out.innerHTML = "";
+  const steps = spec.steps || [];
+  const head = document.createElement("div");
+  head.className = "row"; head.style.marginBottom = "14px";
+  head.innerHTML = `<div style="flex:1;font-family:var(--font-title);font-size:17px">${s.title}</div>`;
+  const dl = document.createElement("button"); dl.className="btn p"; dl.textContent="Download PDF";
+  dl.onclick = async () => {
+    const r = await fetch("api/engineer/pdf", {method:"POST",headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({spec})});
+    const b = await r.blob(); const u = URL.createObjectURL(b);
+    const a = document.createElement("a"); a.href=u;
+    a.download = (s.title||"manual").toLowerCase().replace(/[^a-z0-9]+/g,"-")+".pdf";
+    a.click(); URL.revokeObjectURL(u);
+  };
+  head.appendChild(dl); out.appendChild(head);
+
+  if (spec.summary){
+    const p=document.createElement("p"); p.className="sub"; p.style.fontSize="13px";
+    p.style.marginTop="0"; p.textContent=spec.summary; out.appendChild(p);
+  }
+
+  const nc=document.createElement("div"); nc.className="card";
+  nc.innerHTML = `<h4>Parts list</h4><div class="sheet">${s.nomenclature}</div>`;
+  out.appendChild(nc);
+
+  s.sheets.forEach((sh,i)=>{
+    const st = steps[i] || {};
+    const c = document.createElement("div"); c.className="card";
+    c.innerHTML = `
+      <div class="row" style="margin-bottom:8px">
+        <span class="tag">STEP ${sh.n}</span>
+        <span style="font-family:var(--font-title);font-size:14.5px">${st.title||sh.title}</span>
+        <span class="sub" style="margin-left:auto">${st.duration_min?st.duration_min+" min":""}</span>
+      </div>
+      <div class="sheet">${sh.svg}</div>
+      <div class="grid">
+        <div><h4>Do</h4><ol>${(st.actions||[]).map(a=>`<li>${a}</li>`).join("")}</ol></div>
+        <div>
+          <h4>Why it works</h4><div class="why">${st.why||""}</div>
+          ${st.check?`<h4 style="margin-top:10px">Check</h4><div class="chk">${st.check}</div>`:""}
+          ${st.hazard?`<div class="haz">⚠ ${st.hazard}</div>`:""}
+        </div>
+      </div>`;
+    out.appendChild(c);
+  });
+
+  if (spec.checks && spec.checks.length){
+    const c=document.createElement("div"); c.className="card";
+    c.innerHTML = `<h4>Final function test</h4><ol>${spec.checks.map(x=>`<li>${x}</li>`).join("")}</ol>`;
+    out.appendChild(c);
+  }
+}
+</script>
+</body>
+</html>

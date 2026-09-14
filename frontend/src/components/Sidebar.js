@@ -13,6 +13,7 @@ export default function Sidebar() {
     { to: "/",        label: t("nav.dashboard"), ico: "▣" },
     { to: "/create",  label: t("nav.create"),    ico: "✨" },
     { to: "/credits", label: t("nav.credits"),   ico: "✎" },
+    { to: "/engineer", label: "Engineer",          ico: "✎" },
     { to: "/settings",label: t("nav.settings"),  ico: "⚙" },
   ];
 

@@ -1,0 +1,1236 @@
+{
+  "title": "FX-1 — Toothpick Crossbow",
+  "subtitle": "A working 1:6 crossbow with a bending wooden prod, a channel-guided bolt and a clothespin trigger",
+  "mode": "create",
+  "lang": "en",
+  "difficulty": "intermediate",
+  "scale": "1:2",
+  "summary": "A real crossbow in miniature, not a rubber-band catapult. Energy is stored by bending a wooden prod, held by an inextensible string at a nut, and released by a clothespin trigger. The bolt is 48 mm of toothpick riding a two-rail channel. Built from one pine batten, a strip of the same batten for the prod, two bamboo skewers, a clothespin, two rubber bands and a length of nylon twine.",
+  "fits": {
+    "prod_offset_mm": {
+      "value": 40,
+      "note": "prod centreline from the front end of the stock"
+    },
+    "notch_depth_mm": {
+      "value": 4,
+      "note": "depth of the slot that locates the prod"
+    },
+    "notch_width_mm": {
+      "value": 1.4,
+      "note": "slot width: 0.4 mm clearance each side of the 3 mm... see prod_thickness_mm"
+    },
+    "prod_thickness_mm": {
+      "value": 3,
+      "note": "prod thickness along the draw axis — the bending dimension"
+    },
+    "prod_height_mm": {
+      "value": 12,
+      "note": "prod height, vertical — this is what stops it flapping"
+    },
+    "prod_length_mm": {
+      "value": 220,
+      "note": "overall prod length, tip to tip"
+    },
+    "channel_gap_mm": {
+      "value": 1.6,
+      "note": "clear gap between the two channel rails"
+    },
+    "rail_dia_mm": {
+      "value": 3,
+      "note": "bamboo skewer diameter"
+    },
+    "rail_front_mm": {
+      "value": 46,
+      "note": "rail front end, from the front of the stock"
+    },
+    "rail_rear_mm": {
+      "value": 90,
+      "note": "rail rear end — must clear the trigger body"
+    },
+    "brace_height_mm": {
+      "value": 30,
+      "note": "string to prod centre, at rest"
+    },
+    "nut_offset_mm": {
+      "value": 52,
+      "note": "nut behind the prod centreline — this sets full draw"
+    },
+    "power_stroke_mm": {
+      "value": 22,
+      "note": "nut_offset − brace_height: distance the bolt is pushed"
+    },
+    "string_working_mm": {
+      "value": 230,
+      "note": "span between the two knots, measured tip to tip via the string"
+    },
+    "bolt_length_mm": {
+      "value": 48,
+      "note": "toothpick cut length"
+    },
+    "bolt_dia_mm": {
+      "value": 2.2,
+      "note": "round toothpick diameter"
+    }
+  },
+  "principles": [
+    "The prod is a leaf spring stood on edge: 12 mm tall so it cannot flap up and down, only 3 mm thick along the draw axis so it bends easily exactly where you want it to. That cross-section is what puts the draw weight around 8-10 N (under 1 kgf) — cockable with one hand.",
+    "Drawing the string bends both limbs backwards and stores strain energy in the wood. The string does not stretch, so what you put in is what comes out.",
+    "Because the string spans tip to tip, a small movement at the tips becomes a large movement at the centre. That lever effect is why a 220 mm prod yields a usable 22 mm power stroke.",
+    "Only part of the stored energy reaches the bolt; the rest accelerates the limbs and the string themselves. That is why light stiff limbs matter and why a heavier prod can shoot slower even though it is harder to draw.",
+    "The channel does the aiming. It constrains the bolt sideways for its whole travel, so the launch direction repeats from shot to shot.",
+    "The trigger is a pair of first-class levers (the peg jaws) loaded by the string's own tension. Squeezing opens them; the string slips out and the shot is gone before your hand can move."
+  ],
+  "safety": [
+    "Wear eye protection. A toothpick leaving at 10 m/s will pierce skin and will destroy an eye.",
+    "Never point it at a person or an animal, loaded or not. Treat it as loaded at all times.",
+    "NEVER dry-fire. With no bolt to push, all the stored energy goes back into the prod and splits it.",
+    "Inspect the prod for cracks along the grain before every session. A prod that lets go throws splinters at head height.",
+    "Shoot only into a soft backstop (cardboard box, folded blanket) from 3 m, indoors, with a clear lane.",
+    "Not a toy: builder must be 14+, or supervised by an adult."
+  ],
+  "materials": [
+    {
+      "ref": "P1",
+      "name": "Stock",
+      "material": "pine batten, straight grain, knot-free",
+      "length_mm": 240,
+      "width_mm": 26,
+      "thickness_mm": 12,
+      "qty": 1,
+      "shape": "bar",
+      "source": "hardware store; a 240 mm offcut of planed 26 x 12 mm pine",
+      "notes": "Grain must run lengthwise. Any knot in the middle third is a rejection."
+    },
+    {
+      "ref": "P2",
+      "name": "Prod (bow limb)",
+      "material": "pine strip from the same batten, grain along its length",
+      "length_mm": 220,
+      "width_mm": 12,
+      "thickness_mm": 3,
+      "qty": 1,
+      "shape": "bar",
+      "source": "rip and sand a 12 x 3 mm strip off the P1 offcut",
+      "notes": "This is the spring. No plywood, no balsa, no craft stick: they have no usable elastic range."
+    },
+    {
+      "ref": "P3",
+      "name": "String",
+      "material": "braided nylon twine or waxed dental floss — must NOT stretch",
+      "length_mm": 360,
+      "width_mm": 1,
+      "qty": 1,
+      "shape": "cord",
+      "source": "hardware store / haberdashery",
+      "notes": "Cut 360 mm, then knot it so the working span between the prod tips is 230 mm."
+    },
+    {
+      "ref": "P4",
+      "name": "Trigger",
+      "material": "wooden spring clothespin (coil-spring type)",
+      "length_mm": 72,
+      "width_mm": 18,
+      "thickness_mm": 10,
+      "qty": 1,
+      "shape": "clip",
+      "source": "supermarket",
+      "notes": "The spring must snap shut crisply. Plastic pegs creep and fire on their own."
+    },
+    {
+      "ref": "P5",
+      "name": "Channel rail A",
+      "material": "bamboo skewer",
+      "length_mm": 44,
+      "width_mm": 3,
+      "qty": 1,
+      "shape": "rod",
+      "source": "supermarket",
+      "notes": "Roll it on a flat surface first and reject anything that wobbles."
+    },
+    {
+      "ref": "P6",
+      "name": "Channel rail B",
+      "material": "bamboo skewer",
+      "length_mm": 44,
+      "width_mm": 3,
+      "qty": 1,
+      "shape": "rod",
+      "source": "supermarket",
+      "notes": "Must match P5's diameter within 0.2 mm or the bolt sits off-centre."
+    },
+    {
+      "ref": "P7",
+      "name": "Prod lashing",
+      "material": "small rubber band (#16, 70 x 4 mm)",
+      "length_mm": 70,
+      "width_mm": 4,
+      "qty": 2,
+      "shape": "band",
+      "source": "supermarket",
+      "notes": "Two bands. They only stop the prod lifting; the notch carries the load."
+    },
+    {
+      "ref": "P8",
+      "name": "Bolt",
+      "material": "round wooden toothpick, cut to 48 mm",
+      "length_mm": 48,
+      "width_mm": 2.2,
+      "qty": 10,
+      "shape": "rod",
+      "source": "supermarket",
+      "notes": "Score once with a knife and snap, then square the snapped end on 240-grit."
+    }
+  ],
+  "tools": [
+    {
+      "name": "Craft knife with a fresh blade",
+      "optional": false,
+      "substitute": "small modelling saw"
+    },
+    {
+      "name": "Steel rule",
+      "optional": false,
+      "substitute": ""
+    },
+    {
+      "name": "Try square, or the corner of a credit card",
+      "optional": false,
+      "substitute": ""
+    },
+    {
+      "name": "PVA wood glue",
+      "optional": false,
+      "substitute": "yellow carpenter's glue"
+    },
+    {
+      "name": "Hot glue gun",
+      "optional": false,
+      "substitute": "5-minute two-part epoxy"
+    },
+    {
+      "name": "Sandpaper, 120 and 240 grit, on a flat block",
+      "optional": false,
+      "substitute": ""
+    },
+    {
+      "name": "Masking tape, or two small clamps",
+      "optional": false,
+      "substitute": ""
+    },
+    {
+      "name": "1.6 mm spacer (a folded business card)",
+      "optional": false,
+      "substitute": "two layers of 80 gsm card"
+    },
+    {
+      "name": "Scissors",
+      "optional": false,
+      "substitute": ""
+    },
+    {
+      "name": "Cutting mat",
+      "optional": true,
+      "substitute": "a piece of scrap cardboard"
+    }
+  ],
+  "steps": [
+    {
+      "n": 1,
+      "title": "Cut the stock and mark the layout",
+      "duration_min": 15,
+      "parts_used": [
+        "P1"
+      ],
+      "context_parts": [],
+      "intent": "Produce a flat, square 240 mm stock carrying a centreline and a prod line you can trust for every step that follows.",
+      "actions": [
+        "Cut the batten to 240 mm. Saw or knife just outside the line, then sneak up on it with a sanding block until the end is square and the length is exact.",
+        "Check the stock is straight: lay it on a flat surface and press each end in turn. Any rocking means it is twisted — sand the high corner until it sits flat.",
+        "Scribe the centreline down the full length of the top face. Slide the rule along; do not drag a pencil against it, a dragged line wanders.",
+        "Square a line across the top face 40 mm from the front end and carry it down both sides. This is the prod line.",
+        "Mark a second line across the top face at 46 mm from the front end. That is where the channel rails start."
+      ],
+      "why": "Every later measurement hangs off these two lines. A centreline drawn by dragging a pencil can drift 1 mm over 240 mm, and 1 mm of prod skew becomes a bolt that leaves the channel sideways. Squaring the front end first matters because it is the datum everything else is measured from.",
+      "check": "Lay a try square across the front end: no light gap. Measure the prod line from the front end on BOTH sides of the stock — the two readings must agree within 0.5 mm.",
+      "tip": "Cut the stock 5 mm long, then trim. It is far easier to take 5 mm off than to put it back.",
+      "hazard": "",
+      "drawing": {
+        "view": "PLAN",
+        "caption": "stock, top face",
+        "shapes": [
+          {
+            "k": "part",
+            "ref": "P1",
+            "x": 120,
+            "y": 13,
+            "rot": 0,
+            "role": "new"
+          },
+          {
+            "k": "axis",
+            "x1": 8,
+            "y1": 13,
+            "x2": 232,
+            "y2": 13
+          },
+          {
+            "k": "axis",
+            "x1": 40,
+            "y1": -14,
+            "x2": 40,
+            "y2": 40
+          },
+          {
+            "k": "dim",
+            "ref": "P1",
+            "axis": "length",
+            "off": 22
+          },
+          {
+            "k": "dim",
+            "ref": "P1",
+            "axis": "width",
+            "off": 130
+          },
+          {
+            "k": "dim",
+            "x1": 0,
+            "y1": 34,
+            "x2": 40,
+            "y2": 34,
+            "fit": "prod_offset_mm"
+          },
+          {
+            "k": "note",
+            "x": 34,
+            "y": -26,
+            "to": [
+              40,
+              4
+            ],
+            "text": "PROD LINE {prod_offset_mm} mm",
+            "critical": true
+          },
+          {
+            "k": "note",
+            "x": 150,
+            "y": 34,
+            "to": [
+              150,
+              21
+            ],
+            "text": "CENTRELINE"
+          },
+          {
+            "k": "note",
+            "x": 8,
+            "y": 34,
+            "to": [
+              2,
+              20
+            ],
+            "text": "FRONT",
+            "anchor": "start"
+          }
+        ]
+      }
+    },
+    {
+      "n": 2,
+      "title": "Cut the prod notch and dry-fit the prod",
+      "duration_min": 20,
+      "parts_used": [
+        "P2"
+      ],
+      "context_parts": [
+        "P1",
+        "P5",
+        "P6",
+        "P8"
+      ],
+      "intent": "Sink the prod into the stock so that the prod's vertical centre lands on the bolt axis — the one alignment that decides whether the bolt flies flat or flips.",
+      "actions": [
+        "Plane or sand the P2 strip to a clean 220 x 12 x 3 mm. Round nothing; the edges stay sharp and square.",
+        "At the prod line mark a slot across the stock: 1.4 mm wide, centred on the centreline, running the full 26 mm width.",
+        "Cut it: score both edges with the knife, then pare out the waste in thin shavings. Go down 4 mm, no deeper, checking with the rule every few strokes.",
+        "Clean the slot with a fold of 240-grit wrapped around a 1 mm slip of card until the prod drops in under finger pressure alone.",
+        "Drop the prod in. It must stand vertically with no lean, and its centre must sit level with where the bolt will ride."
+      ],
+      "why": "The slot, not the lashing, carries the prod's rearward thrust into the stock: 4 mm of side wall takes that load in compression along the grain, which pine handles well. The 0.4 mm clearance lets the limb root rotate a fraction as it flexes instead of binding — binding at the root is where prods break. Depth is chosen so the prod's centre ends up 2 mm above the stock face (12/2 − 4), within a millimetre of the bolt axis at 2.7 mm.",
+      "check": "Push the prod down and let it go: it stays. Dry-lay the two rails and roll a 2.2 mm toothpick along them — the toothpick centreline and the prod centreline must be within 1 mm vertically.",
+      "tip": "Slightly loose beats slightly tight. A prod you have to tap in is pre-stressed and will split on the first shot.",
+      "hazard": "",
+      "drawing": {
+        "view": "SECTION A-A",
+        "caption": "through the prod line, looking forward",
+        "shapes": [
+          {
+            "k": "part",
+            "ref": "P1",
+            "shape": "bar",
+            "len_mm": 26,
+            "wid_mm": 12,
+            "x": 13,
+            "y": 6,
+            "rot": 0,
+            "role": "base"
+          },
+          {
+            "k": "hatch",
+            "x": 12.3,
+            "y": 0,
+            "w": 1.4,
+            "h": 4,
+            "kind": "cut",
+            "label": "SLOT {notch_width_mm} x {notch_depth_mm}"
+          },
+          {
+            "k": "part",
+            "ref": "P2",
+            "shape": "bar",
+            "len_mm": 3,
+            "wid_mm": 12,
+            "x": 13,
+            "y": -2,
+            "rot": 0,
+            "role": "new"
+          },
+          {
+            "k": "part",
+            "ref": "P5",
+            "shape": "disc",
+            "len_mm": 3,
+            "wid_mm": 3,
+            "x": 10.7,
+            "y": -1.5,
+            "rot": 0,
+            "role": "ghost"
+          },
+          {
+            "k": "part",
+            "ref": "P6",
+            "shape": "disc",
+            "len_mm": 3,
+            "wid_mm": 3,
+            "x": 15.3,
+            "y": -1.5,
+            "rot": 0,
+            "role": "ghost"
+          },
+          {
+            "k": "part",
+            "ref": "P8",
+            "shape": "disc",
+            "len_mm": 2.2,
+            "wid_mm": 2.2,
+            "x": 13,
+            "y": -2.71,
+            "rot": 0,
+            "role": "ghost"
+          },
+          {
+            "k": "dim",
+            "x1": 16.5,
+            "y1": 0,
+            "x2": 16.5,
+            "y2": 4,
+            "fit": "notch_depth_mm"
+          },
+          {
+            "k": "dim",
+            "x1": 12.3,
+            "y1": -9.5,
+            "x2": 13.7,
+            "y2": -9.5,
+            "fit": "notch_width_mm"
+          },
+          {
+            "k": "dim",
+            "ref": "P2",
+            "axis": "width",
+            "off": 6
+          },
+          {
+            "k": "axis",
+            "x1": 4,
+            "y1": -2,
+            "x2": 22,
+            "y2": -2
+          },
+          {
+            "k": "axis",
+            "x1": 13,
+            "y1": -12,
+            "x2": 13,
+            "y2": 16
+          },
+          {
+            "k": "note",
+            "x": 30,
+            "y": -6,
+            "to": [
+              13,
+              -2
+            ],
+            "text": "PROD CENTRE ON BOLT AXIS",
+            "critical": true
+          },
+          {
+            "k": "no",
+            "x": 2,
+            "y": 9,
+            "r": 3.2,
+            "label": "NOT DEEPER THAN {notch_depth_mm} mm"
+          }
+        ]
+      }
+    },
+    {
+      "n": 3,
+      "title": "Lash the prod down",
+      "duration_min": 10,
+      "parts_used": [
+        "P7"
+      ],
+      "context_parts": [
+        "P1",
+        "P2"
+      ],
+      "intent": "Clamp the prod into its slot without gluing it, so the limb root can still work and the prod can be replaced if it ever breaks.",
+      "actions": [
+        "Hook the first rubber band under the stock, bring both ends up over the prod on the front side, and cross them.",
+        "Take the ends down the back side of the prod and hook them under the stock again. That is one diagonal turn across the prod.",
+        "Repeat with the second band, crossing the other way, so the two bands make an X over the prod.",
+        "Seat the bands tight against the prod, one on each side of the slot — not on top of it.",
+        "Test: press each prod tip rearward 15 mm and let go. The tip must spring back to exactly where it started. Any drift means the lashing is loose."
+      ],
+      "why": "The lashing is a clamp, not a joint. It only has to stop the prod lifting out as the limbs rotate under load. Leaving it unglued lets the limb root rotate a fraction of a degree, which removes the stress peak that would otherwise crack the prod right at the stock edge. The X matters too: a single turn lets the prod twist about the stock axis, two opposed turns cancel that twist out.",
+      "check": "Both bands sit within 3 mm of the slot, one each side. The prod cannot be lifted by hand. Both tips return to the same place after a 15 mm flex.",
+      "tip": "If the bands slide, put one drop of hot glue on the UNDERSIDE of the stock where they cross — never on top of the prod.",
+      "hazard": "",
+      "drawing": {
+        "view": "DETAIL B",
+        "caption": "prod joint, from above",
+        "shapes": [
+          {
+            "k": "part",
+            "ref": "P1",
+            "x": 120,
+            "y": 13,
+            "rot": 0,
+            "role": "base"
+          },
+          {
+            "k": "part",
+            "ref": "P2",
+            "x": 40,
+            "y": 13,
+            "rot": 90,
+            "wid_mm": 3,
+            "role": "base"
+          },
+          {
+            "k": "part",
+            "ref": "P7",
+            "x": 40,
+            "y": 13,
+            "rot": 52,
+            "len_mm": 80,
+            "wid_mm": 4,
+            "role": "new"
+          },
+          {
+            "k": "part",
+            "ref": "P7",
+            "x": 40,
+            "y": 13,
+            "rot": -52,
+            "len_mm": 80,
+            "wid_mm": 4,
+            "role": "new",
+            "label": false
+          },
+          {
+            "k": "dim",
+            "ref": "P2",
+            "axis": "length",
+            "off": 14
+          },
+          {
+            "k": "note",
+            "x": 74,
+            "y": -30,
+            "to": [
+              43,
+              -10
+            ],
+            "text": "X-LASH: 2 TURNS, OPPOSITE",
+            "critical": true
+          },
+          {
+            "k": "note",
+            "x": 78,
+            "y": 60,
+            "to": [
+              43,
+              36
+            ],
+            "text": "PROD ON EDGE: {prod_height_mm} x {prod_thickness_mm} mm"
+          },
+          {
+            "k": "no",
+            "x": 150,
+            "y": 60,
+            "r": 6,
+            "label": "NO GLUE ON THE PROD"
+          }
+        ]
+      }
+    },
+    {
+      "n": 4,
+      "title": "Build the bolt channel",
+      "duration_min": 25,
+      "parts_used": [
+        "P5",
+        "P6"
+      ],
+      "context_parts": [
+        "P1",
+        "P8"
+      ],
+      "intent": "Make a V-groove that centres the bolt, keeps it in, and lets it slide free. The gap must be narrower than the bolt or the bolt simply falls through.",
+      "actions": [
+        "Dry-lay the two skewers on the stock, parallel to the centreline, front ends on the 46 mm mark.",
+        "Slip the 1.6 mm spacer between them and squeeze both against it. The gap is now 1.6 mm.",
+        "Run a thin bead of PVA down the OUTER side of each skewer where it meets the stock. Never under the middle: glue wicking into the valley glues your bolt in.",
+        "Tape or clamp both skewers down with the spacer still in place and leave it for 30 minutes.",
+        "Pull the spacer out and roll a bolt along the channel. It must ride on both rails with no side play and no binding."
+      ],
+      "why": "Two round rails form a V-groove: the bolt touches each rail along a line, so gravity self-centres it and the contact area stays tiny, which keeps friction low. The critical number is the gap. At 1.6 mm it is smaller than the 2.2 mm bolt, so the bolt rests on top of both rails, 1.2 mm above the rail centres. Open the gap past 2.2 mm and the bolt drops straight through the channel — the single most common way this build fails. Glue only on the outer flanks for the same reason: squeeze-out in the valley is invisible right up to the moment the bolt sticks halfway.",
+      "check": "Roll a bolt the length of the channel with the stock tilted 20 degrees: it must roll freely and must never drop through. Sight along the channel from the rear — the prod centreline must sit dead above the bolt centreline.",
+      "tip": "Bamboo skewers are rarely round. Roll both on a flat surface first and pair the two least-wobbly ones; a bent rail makes the bolt walk sideways under acceleration.",
+      "hazard": "",
+      "drawing": {
+        "view": "SECTION C-C",
+        "caption": "through the bolt channel",
+        "shapes": [
+          {
+            "k": "part",
+            "ref": "P1",
+            "shape": "bar",
+            "len_mm": 26,
+            "wid_mm": 12,
+            "x": 13,
+            "y": 6,
+            "rot": 0,
+            "role": "base"
+          },
+          {
+            "k": "part",
+            "ref": "P5",
+            "shape": "disc",
+            "len_mm": 3,
+            "wid_mm": 3,
+            "x": 10.7,
+            "y": -1.5,
+            "rot": 0,
+            "role": "new"
+          },
+          {
+            "k": "part",
+            "ref": "P6",
+            "shape": "disc",
+            "len_mm": 3,
+            "wid_mm": 3,
+            "x": 15.3,
+            "y": -1.5,
+            "rot": 0,
+            "role": "new"
+          },
+          {
+            "k": "part",
+            "ref": "P8",
+            "shape": "disc",
+            "len_mm": 2.2,
+            "wid_mm": 2.2,
+            "x": 13,
+            "y": -2.71,
+            "rot": 0,
+            "role": "ghost"
+          },
+          {
+            "k": "dim",
+            "x1": 12.2,
+            "y1": -1.5,
+            "x2": 13.8,
+            "y2": -1.5,
+            "fit": "channel_gap_mm",
+            "critical": true
+          },
+          {
+            "k": "dim",
+            "ref": "P5",
+            "axis": "length",
+            "off": 4
+          },
+          {
+            "k": "dim",
+            "ref": "P8",
+            "axis": "length",
+            "off": 8
+          },
+          {
+            "k": "axis",
+            "x1": 13,
+            "y1": -10,
+            "x2": 13,
+            "y2": 16
+          },
+          {
+            "k": "note",
+            "x": 34,
+            "y": -5,
+            "to": [
+              13,
+              -2.7
+            ],
+            "text": "BOLT RIDES ON BOTH RAILS",
+            "critical": true
+          },
+          {
+            "k": "note",
+            "x": -8,
+            "y": -5,
+            "to": [
+              9.5,
+              -1.5
+            ],
+            "text": "GLUE ON OUTER FLANK ONLY",
+            "anchor": "start"
+          },
+          {
+            "k": "no",
+            "x": -8,
+            "y": 8,
+            "r": 3.4,
+            "label": "GAP > {bolt_dia_mm} mm = BOLT FALLS THROUGH"
+          }
+        ]
+      }
+    },
+    {
+      "n": 5,
+      "title": "String it and set the brace height",
+      "duration_min": 15,
+      "parts_used": [
+        "P3"
+      ],
+      "context_parts": [
+        "P1",
+        "P2",
+        "P7"
+      ],
+      "intent": "Fit a string of exactly the right span so the prod sits slightly pre-loaded and the string rests 30 mm behind the prod centre.",
+      "actions": [
+        "Cut 360 mm of twine and tie a small overhand knot 20 mm from one end.",
+        "Tie that end to one prod tip with a timber hitch and pull it tight. The knot sits on the BACK face of the tip, clear of the bolt path.",
+        "Run the twine across to the other tip, round it, and back — do not knot yet.",
+        "Pull the free end until the string stands 30 mm behind the prod centre, measured on the centreline, and mark the twine at the tip.",
+        "Knot at the mark with a second timber hitch, trim the tail to 10 mm, and dab both knots with PVA. Dry, the working span is 230 mm."
+      ],
+      "why": "Brace height is the pre-load on the spring. Too little and the string is slack at rest, so the first millimetres of the draw do nothing and the prod snaps to a stop at the end of the stroke. Too much and you eat into the power stroke and pre-stress the limb before you even draw. 30 mm behind a 220 mm prod leaves 22 mm of usable stroke to the nut, which is the right trade for a 0.1 g bolt.",
+      "check": "Prod centreline to string, on the centreline: 30 mm +/- 2 mm. Pluck the string — it should ring, not thud. Sight along the prod: both limbs must be equally bent.",
+      "tip": "Use a timber hitch or a bowline-and-a-half. A plain overhand knot on a smooth nylon tip creeps, and the brace height drops shot by shot.",
+      "hazard": "",
+      "drawing": {
+        "view": "PLAN",
+        "caption": "string at rest — brace height",
+        "shapes": [
+          {
+            "k": "part",
+            "ref": "P1",
+            "x": 120,
+            "y": 13,
+            "rot": 0,
+            "role": "base"
+          },
+          {
+            "k": "part",
+            "ref": "P2",
+            "x": 40,
+            "y": 13,
+            "rot": 90,
+            "wid_mm": 3,
+            "role": "base"
+          },
+          {
+            "k": "part",
+            "ref": "P7",
+            "x": 40,
+            "y": 13,
+            "rot": 52,
+            "len_mm": 80,
+            "wid_mm": 4,
+            "role": "base",
+            "label": false
+          },
+          {
+            "k": "part",
+            "ref": "P3",
+            "shape": "cord",
+            "rot": 0,
+            "role": "new",
+            "wid": 1.2,
+            "pts": [
+              [
+                40,
+                -97
+              ],
+              [
+                70,
+                13
+              ],
+              [
+                40,
+                123
+              ]
+            ]
+          },
+          {
+            "k": "dim",
+            "x1": 40,
+            "y1": 44,
+            "x2": 70,
+            "y2": 44,
+            "fit": "brace_height_mm",
+            "critical": true
+          },
+          {
+            "k": "axis",
+            "x1": 8,
+            "y1": 13,
+            "x2": 232,
+            "y2": 13
+          },
+          {
+            "k": "note",
+            "x": 96,
+            "y": -34,
+            "to": [
+              70,
+              6
+            ],
+            "text": "BRACE {brace_height_mm} mm",
+            "critical": true
+          },
+          {
+            "k": "note",
+            "x": 150,
+            "y": 60,
+            "to": [
+              40,
+              60
+            ],
+            "text": "WORKING SPAN {string_working_mm} mm"
+          },
+          {
+            "k": "no",
+            "x": 190,
+            "y": 62,
+            "r": 7,
+            "label": "NEVER DRY-FIRE"
+          }
+        ]
+      }
+    },
+    {
+      "n": 6,
+      "title": "Mount the trigger",
+      "duration_min": 20,
+      "parts_used": [
+        "P4"
+      ],
+      "context_parts": [
+        "P1",
+        "P2"
+      ],
+      "intent": "Put the clothespin's jaw tips on the centreline exactly 52 mm behind the prod, so the string can be drawn to the nut and held there under full tension.",
+      "actions": [
+        "Squeeze the peg open and note which half the steel spring bears against — that one becomes the fixed half.",
+        "Roughen the mating faces with 120-grit: the side of the stock and the flat of the peg.",
+        "Hot-glue the peg flat on top of the stock, jaws pointing forward, body lying along the stock. Set it so the jaw tips close on the centreline 92 mm from the front end — 52 mm behind the prod line.",
+        "Hold it 30 seconds, then add a fillet of hot glue along the top edge of the joint. That joint takes the whole trigger load in shear.",
+        "Draw the string back to the nut and let the jaws close on it. Squeeze to release: it must let go instantly and cleanly."
+      ],
+      "why": "Nut position is the biggest lever on performance: it converts prod geometry into power stroke. At 52 mm behind the prod centre the string has already travelled the 30 mm brace height, leaving 22 mm over which it is actually touching and pushing the bolt. Move the nut back and the tips over-flex and the prod splits; move it forward and you throw away stroke. The peg lies flat, jaws forward, because that puts the jaw line at roughly 5 mm above the stock face — level with the string at the nut.",
+      "check": "With the string held at the nut it must sit on the centreline and the jaw tips must grip it clear of the rails. Squeeze: the string releases with no hang-up. Do it five times — every release must feel and sound identical.",
+      "tip": "If the jaws chew the string, wrap the tips with one turn of masking tape. If the shot string creeps forward, the peg is too far back — that is geometry, not glue.",
+      "hazard": "",
+      "drawing": {
+        "view": "PLAN",
+        "caption": "trigger and nut geometry",
+        "shapes": [
+          {
+            "k": "part",
+            "ref": "P1",
+            "x": 120,
+            "y": 13,
+            "rot": 0,
+            "role": "base"
+          },
+          {
+            "k": "part",
+            "ref": "P2",
+            "x": 40,
+            "y": 13,
+            "rot": 90,
+            "wid_mm": 3,
+            "role": "base"
+          },
+          {
+            "k": "part",
+            "ref": "P4",
+            "x": 128,
+            "y": 13,
+            "rot": 180,
+            "role": "new"
+          },
+          {
+            "k": "dim",
+            "x1": 40,
+            "y1": 54,
+            "x2": 92,
+            "y2": 54,
+            "fit": "nut_offset_mm",
+            "critical": true
+          },
+          {
+            "k": "axis",
+            "x1": 8,
+            "y1": 13,
+            "x2": 232,
+            "y2": 13
+          },
+          {
+            "k": "arrow",
+            "x1": 116,
+            "y1": 44,
+            "x2": 112,
+            "y2": 26,
+            "critical": true,
+            "label": "SQUEEZE"
+          },
+          {
+            "k": "note",
+            "x": 66,
+            "y": -34,
+            "to": [
+              92,
+              4
+            ],
+            "text": "NUT {nut_offset_mm} mm BEHIND PROD",
+            "critical": true
+          },
+          {
+            "k": "note",
+            "x": 190,
+            "y": 60,
+            "to": [
+              160,
+              20
+            ],
+            "text": "GLUE FILLET ON TOP EDGE"
+          }
+        ]
+      }
+    },
+    {
+      "n": 7,
+      "title": "Make the bolts",
+      "duration_min": 15,
+      "parts_used": [
+        "P8"
+      ],
+      "context_parts": [],
+      "intent": "Turn a toothpick into a bolt: right length, square tail, and a small mass at the front that stabilises it and blunts it.",
+      "actions": [
+        "Cut toothpicks to 48 mm. Score once with the knife and snap, then square the snapped end on 240-grit.",
+        "Roll each one on a flat surface and reject any that wobbles. A bent bolt scrapes down the channel and shoots wide.",
+        "Put a 2 mm dab of hot glue on the front end and roll it between your fingers into a smooth round head while it is still soft.",
+        "Check the head clears the channel: it must pass both rails without touching.",
+        "Make ten. You will lose several into the backstop before you stop overshooting."
+      ],
+      "why": "The glue head does three jobs. It moves the centre of mass forward so the bolt flies point-first instead of tumbling; it adds roughly a third to the mass, which at constant stored energy trades a little speed for a lot more momentum and a flatter trajectory; and it blunts the tip, the cheapest safety gain in the whole build. Length is 48 mm so that with the tail at the nut the tip still clears the prod by 2.5 mm.",
+      "check": "Every bolt rolls straight and every head clears the channel. Weigh five on a kitchen scale: they should agree within 10%. A matched set groups; a mixed set scatters.",
+      "tip": "Number the bolts and note which one groups best. It is almost always the same one, and that tells you your channel is consistent.",
+      "hazard": "",
+      "drawing": {
+        "view": "DETAIL D",
+        "caption": "bolt, side view",
+        "shapes": [
+          {
+            "k": "part",
+            "ref": "P8",
+            "shape": "rod",
+            "x": 24,
+            "y": 0,
+            "rot": 0,
+            "role": "new"
+          },
+          {
+            "k": "part",
+            "ref": "P8",
+            "shape": "rod",
+            "len_mm": 15,
+            "wid_mm": 2.2,
+            "x": 55.5,
+            "y": 0,
+            "rot": 0,
+            "role": "ghost",
+            "label": false
+          },
+          {
+            "k": "cutline",
+            "x1": 48,
+            "y1": -8,
+            "x2": 48,
+            "y2": 8,
+            "label": "CUT {bolt_length_mm} mm"
+          },
+          {
+            "k": "hatch",
+            "x": 49.5,
+            "y": -1.1,
+            "w": 12,
+            "h": 2.2,
+            "kind": "remove",
+            "label": "WASTE"
+          },
+          {
+            "k": "dim",
+            "ref": "P8",
+            "axis": "length",
+            "off": 8
+          },
+          {
+            "k": "dim",
+            "ref": "P8",
+            "axis": "width",
+            "off": 16
+          },
+          {
+            "k": "note",
+            "x": 30,
+            "y": -14,
+            "to": [
+              0,
+              -1.5
+            ],
+            "text": "GLUE HEAD 2 mm — BLUNT AND NOSE-HEAVY",
+            "critical": true
+          },
+          {
+            "k": "note",
+            "x": 30,
+            "y": 16,
+            "to": [
+              48,
+              2
+            ],
+            "text": "SQUARE TAIL"
+          },
+          {
+            "k": "no",
+            "x": 58,
+            "y": 18,
+            "r": 4,
+            "label": "NO BENT OR SPLIT SHAFTS"
+          }
+        ]
+      }
+    },
+    {
+      "n": 8,
+      "title": "Tune, safety-check and fire",
+      "duration_min": 20,
+      "parts_used": [
+        "P8"
+      ],
+      "context_parts": [
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5",
+        "P6",
+        "P7"
+      ],
+      "intent": "Prove the mechanism on the bench, then take the first shot into a backstop from 3 m.",
+      "actions": [
+        "Dry cycle: draw the string to the nut, squeeze, release — five times with NO bolt. The string must return to a 30 mm brace every time.",
+        "Sight down the channel from the rear with the string drawn: prod centre, channel centre and nut must all lie on one line.",
+        "Cock it: draw the string back until the jaws close on it.",
+        "Load: drop a bolt into the channel and slide it forward until its tail rests against the string.",
+        "Aim at the backstop from 3 m, keep everything behind the muzzle clear, squeeze the peg and watch where it lands.",
+        "If it shoots high the bolt is lifting off the rails, which means the prod centre sits above the bolt axis. If it shoots sideways the channel is off the centreline. Fix the cause, never the aim."
+      ],
+      "why": "A crossbow is a spring launching a projectile and the bolt only does what the last 22 mm tells it to. Any slack between the string, the nut and the channel shows up as scatter, because the bolt leaves the rails before it has finished accelerating. That is also why a dry-fire sounds wrong: with no bolt to absorb it, the energy that should have gone into 0.1 g of wood goes back into the limbs, and the prod rings, splits, or both.",
+      "check": "After five shots: brace height still 30 mm, lashing has not moved, no whitening along the prod grain, and five bolts from 3 m land inside a 150 mm circle. If any of those fail, stop and fix it before the next shot.",
+      "tip": "Photograph the brace height on day one. A wooden prod takes a set over the first hundred shots and the brace creeps down; below 26 mm, re-knot the string shorter.",
+      "hazard": "EYE PROTECTION — BACKSTOP — NEVER DRY-FIRE",
+      "drawing": {
+        "view": "PLAN",
+        "caption": "at full draw, loaded",
+        "shapes": [
+          {
+            "k": "part",
+            "ref": "P1",
+            "x": 120,
+            "y": 13,
+            "rot": 0,
+            "role": "base"
+          },
+          {
+            "k": "part",
+            "ref": "P5",
+            "x": 68,
+            "y": 10.7,
+            "rot": 0,
+            "role": "base",
+            "label": false
+          },
+          {
+            "k": "part",
+            "ref": "P6",
+            "x": 68,
+            "y": 15.3,
+            "rot": 0,
+            "role": "base",
+            "label": false
+          },
+          {
+            "k": "part",
+            "ref": "P2",
+            "x": 40,
+            "y": 13,
+            "rot": 90,
+            "wid_mm": 3,
+            "role": "base"
+          },
+          {
+            "k": "part",
+            "ref": "P7",
+            "x": 40,
+            "y": 13,
+            "rot": 52,
+            "len_mm": 80,
+            "wid_mm": 4,
+            "role": "base",
+            "label": false
+          },
+          {
+            "k": "part",
+            "ref": "P4",
+            "x": 128,
+            "y": 13,
+            "rot": 180,
+            "role": "base"
+          },
+          {
+            "k": "part",
+            "ref": "P3",
+            "shape": "cord",
+            "rot": 0,
+            "role": "base",
+            "wid": 1.2,
+            "pts": [
+              [
+                40,
+                -97
+              ],
+              [
+                92,
+                13
+              ],
+              [
+                40,
+                123
+              ]
+            ]
+          },
+          {
+            "k": "part",
+            "ref": "P8",
+            "shape": "rod",
+            "x": 68,
+            "y": 13,
+            "rot": 0,
+            "role": "new"
+          },
+          {
+            "k": "dim",
+            "x1": 70,
+            "y1": 44,
+            "x2": 92,
+            "y2": 44,
+            "fit": "power_stroke_mm",
+            "critical": true
+          },
+          {
+            "k": "axis",
+            "x1": 8,
+            "y1": 13,
+            "x2": 232,
+            "y2": 13
+          },
+          {
+            "k": "arrow",
+            "x1": 36,
+            "y1": -34,
+            "x2": 4,
+            "y2": -34,
+            "critical": true,
+            "label": "LAUNCH"
+          },
+          {
+            "k": "note",
+            "x": 116,
+            "y": -34,
+            "to": [
+              92,
+              4
+            ],
+            "text": "POWER STROKE {power_stroke_mm} mm",
+            "critical": true
+          },
+          {
+            "k": "note",
+            "x": 190,
+            "y": 66,
+            "to": [
+              160,
+              22
+            ],
+            "text": "BOLT TAIL ON THE STRING"
+          },
+          {
+            "k": "no",
+            "x": 196,
+            "y": -34,
+            "r": 7,
+            "label": "NO DRY-FIRE"
+          }
+        ]
+      }
+    }
+  ],
+  "checks": [
+    "Brace height reads 30 mm +/- 2 mm at rest, and again after every shot.",
+    "A bolt rolls the full length of the channel under gravity with the stock tilted 20 degrees, and never drops through.",
+    "Prod centreline, channel centreline and nut all lie on the stock centreline when sighted from the rear.",
+    "Five consecutive trigger releases feel and sound identical.",
+    "Five bolts from 3 m group inside a 150 mm circle in a soft backstop.",
+    "No whitening, splitting or splintering along the prod after 20 shots."
+  ]
+}

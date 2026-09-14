@@ -86,3 +86,10 @@ android-sdk/
 credentials.json
 *.key
 .credentials
+
+# vendored python deps for offline/sandbox runs
+backend/.vendor/
+
+# vendored python deps (offline/sandbox fallback)
+backend/.vendor/
+backend/vendor/

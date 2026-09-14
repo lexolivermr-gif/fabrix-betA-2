@@ -773,3 +773,14 @@ textarea.inp { min-height: 60px; resize: vertical; }
   .dgrid { grid-template-columns: 1fr; }
   .cgrid { grid-template-columns: 1fr; }
 }
+
+/* ===== Fabrix Engineer ==================================================== */
+.pg { flex: 1; overflow-y: auto; }
+.eg-sheet {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--rs);
+  padding: 8px;
+  overflow: hidden;
+}
+.eg-sheet svg { display: block; width: 100%; height: auto; }

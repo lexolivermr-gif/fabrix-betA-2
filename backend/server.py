@@ -770,6 +770,14 @@ async def stripe_webhook(request: Request, stripe_signature: Optional[str] = Hea
 # -----------------------------------------------------------------------------
 app.include_router(api)
 
+# --- Fabrix Engineer: one model that asks, reasons, and draws -------------
+try:
+    from engineer.routes import router as _engineer_router
+    app.include_router(_engineer_router)
+    logging.getLogger(__name__).info("engineer router mounted at /api/engineer")
+except Exception as _e:  # never let the new surface take the whole API down
+    logging.getLogger(__name__).warning("engineer router disabled: %s", _e)
+
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,

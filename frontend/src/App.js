@@ -16,6 +16,7 @@ import ManualViewerPage from "@/pages/ManualViewerPage";
 import CreditsPage from "@/pages/CreditsPage";
 import SettingsPage from "@/pages/SettingsPage";
 import PublicSharePage from "@/pages/PublicSharePage";
+import EngineerPage from "@/pages/EngineerPage";
 
 function Bootstrapper({ children }) {
   const bootstrap = useAuth((s) => s.bootstrap);
@@ -41,6 +42,7 @@ export default function App() {
             <Route path="/manual/:id" element={<ManualViewerPage />} />
             <Route path="/credits" element={<CreditsPage />} />
             <Route path="/settings" element={<SettingsPage />} />
+            <Route path="/engineer" element={<EngineerPage />} />
           </Route>
         </Routes>
       </Bootstrapper>
